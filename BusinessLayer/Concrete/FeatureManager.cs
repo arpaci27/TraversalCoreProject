@@ -22,6 +22,11 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public Feature GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Feature> GetList()
         {
             return _featuredal.GetList();

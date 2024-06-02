@@ -1,4 +1,4 @@
-﻿
+﻿@model EntityLayer.Concrete.Destination
 @{
     ViewData["Title"] = "DestinationDetails";
     Layout = "~/Views/Shared/_UILayout.cshtml";
@@ -23,6 +23,9 @@
 </head>
 
 <body>
+
+    <h1>Test Area</h1>
+    <form method="get">@Html.TextBoxFor(x => x.City)</form>
     <!--header-->
     <!-- //header -->
     <!-- about breadcrumb -->
