@@ -13,5 +13,6 @@ namespace DataAccesLayer.Abstract
         void Delete(T t);
         List<T> GetList();
         T GetById(int id);
+        List<T> GetListByFilter(System.Linq.Expressions.Expression<Func<T, bool>> filter);
     }
 }
