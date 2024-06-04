@@ -14,7 +14,7 @@ namespace TraversalCoreProject.Controllers
             return View(values);
         }
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult DestinationDetails(int id)
         {
             ViewBag.i = id;
@@ -22,9 +22,11 @@ namespace TraversalCoreProject.Controllers
             return View(values);
         }
 
-        [HttpPost]
-        public IActionResult DestinationDetails(Destination p) { 
-            destinationManager.TAdd(p);
-            return RedirectToAction("Index");}
-    }
+        //    [HttpPost]
+        //    public IActionResult DestinationDetails(Destination p) { 
+        //        destinationManager.TAdd(p);
+        //        return RedirectToAction("Index");}
+        //}
 }
+
+    }
