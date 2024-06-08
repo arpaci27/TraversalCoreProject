@@ -4,14 +4,16 @@ using DataAccesLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccesLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240608211134_add_mig_add_reservations")]
+    partial class add_mig_add_reservations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -450,7 +452,7 @@ namespace DataAccesLayer.Migrations
 
                     b.HasIndex("DestinationID");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservation");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.SubAbout", b =>

@@ -1,4 +1,5 @@
 ﻿@model TraversalCoreProject.Areas.Member.Models.UserEditViewModel
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -7,28 +8,34 @@
 <h1>Profil Düzenleme Sayfası</h1>
 
 <form method="post" enctype="multipart/form-data">
-    @Html.Label("Adınız")
-    <input type="text" asp-for="name" value="@Model.name" class="form-control" />
-    <br />
-    @Html.Label("Soyadınız")
-    <input type="text" asp-for="surname" value="@Model.surname" class="form-control" />
-    <br />
-    @Html.Label("Mail Adresiniz")
-    <input type="text" asp-for="mail" value="@Model.mail" class="form-control" />
-    <br />
-    @Html.Label("Şifreniz")
-    <input type="text" asp-for="password" value="@Model.password" class="form-control" />
-    <br />
-    @Html.Label("Şifre Tekrar")
-    <input type="text" asp-for="confirmpassword" value="@Model.confirmpassword" class="form-control" />
-    <br />
-    @Html.Label("Telefon Numarası")
-    <input type="text" asp-for="phonenumber" value="@Model.phonenumber" class="form-control" />
-    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.name, "Adınız")
+        @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.surname, "Soyadınız")
+        @Html.TextBoxFor(m => m.surname, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.mail, "Mail Adresiniz")
+        @Html.TextBoxFor(m => m.mail, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.password, "Şifreniz")
+        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.confirmpassword, "Şifre Tekrar")
+        @Html.PasswordFor(m => m.confirmpassword, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.phonenumber, "Telefon Numarası")
+        @Html.TextBoxFor(m => m.phonenumber, new { @class = "form-control" })
+    </div>
     <div class="form-group">
         <label>Resim Seçin</label>
-        <input type="file" asp-for="Image" value="@Model.imageurl"/>
+        <input type="file" asp-for="Image" class="form-control" />
     </div>
     <br />
-    <button class="btn btn-primary">Bilgileri Güncelle</button>
+    <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
 </form>
