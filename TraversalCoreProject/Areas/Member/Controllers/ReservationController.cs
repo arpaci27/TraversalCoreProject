@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
     [Area("Member")]
@@ -40,16 +41,30 @@ namespace TraversalCoreProject.Areas.Member.Controllers
                                                Text = x.City,
                                                Value = x.DestinationID.ToString()
                                            }).ToList();
-            ViewBag.v = values;
+            ViewBag.DestinationList = values;
             return View();
         }
+
         [HttpPost]
-        public IActionResult NewReservation(Reservation p)
+        public async Task<IActionResult> NewReservation(Reservation p)
         {
-            p.AppUserId = 1;
-            p.Status = "Onay Bekliyor";
-            reservationManager.TAdd(p);
-            return RedirectToAction("MyCurrentReservation");
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                p.AppUserId = user.Id;
+                p.Status = "Onay Bekliyor";
+
+                reservationManager.TAdd(p);
+                return RedirectToAction("MyCurrentReservation");
+            }
+            // Formda hata varsa dropdown'ı tekrar doldur
+            ViewBag.DestinationList = (from x in destinationManager.TGetList()
+                                       select new SelectListItem
+                                       {
+                                           Text = x.City,
+                                           Value = x.DestinationID.ToString()
+                                       }).ToList();
+            return View(p); // Return the view with the model to display validation errors
         }
     }
 }
