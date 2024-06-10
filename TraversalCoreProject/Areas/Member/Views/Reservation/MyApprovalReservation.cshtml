@@ -7,21 +7,33 @@
 }
 
 <h1>Onay Bekleyen Rezervasyonlar</h1>
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Rezervasyon Tarihi</th>
-        <th>Kişi Sayısı</th>
-        <th>Rezervasyon Durumu</th>
-    </tr>
-    @foreach(var item in Model)
-    {
-       <tr>
-           <td>@item.ReservationID</td>
-            <td>@item.ReservastionDate</td>
-            <td>@item.PersonCount</td>
-            <td>@item.Status</td>
-       </tr>
-    }
+<table class="table table-bordered table-hover table-striped table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Lokasyon</th>
+            <th>Rezervasyon Tarihi</th>
+            <th>Kişi Sayısı</th>
+            <th>Rezervasyon Durumu</th>
+            <th>Fotoğraf</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle text-center">@item.ReservationID</td>
+                <td class="align-middle text-center">@item.Destination.City</td>
+                <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.ReservastionDate, "{0:dd/MM/yyyy}")</td>
+                <td class="align-middle text-center">@item.PersonCount</td>
+                <td class="align-middle text-center">@item.Status</td>
+                <td class="align-middle text-center">
+                    <img src="@item.Destination.Image" alt="Location Image"
+                         style="transition: transform 0.3s ease-in-out; width: 100px; height: 100px;"
+                         onmouseover="this.style.transform='scale(1.5)'"
+                         onmouseout="this.style.transform='scale(1)'" />
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-

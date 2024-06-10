@@ -1,8 +1,40 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+
 @{
     ViewData["Title"] = "MyCurrentReservation";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h1>MyCurrentReservation</h1>
+<h1>Aktif Rezervasyonlar</h1>
+<table class="table table-bordered table-hover table-striped table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Lokasyon</th>
+            <th>Rezervasyon Tarihi</th>
+            <th>Kişi Sayısı</th>
+            <th>Rezervasyon Durumu</th>
+            <th>Fotoğraf</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle text-center">@item.ReservationID</td>
+                <td class="align-middle text-center">@item.Destination.City</td>
+                <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.ReservastionDate, "{0:dd/MM/yyyy}")</td>
+                <td class="align-middle text-center">@item.PersonCount</td>
+                <td class="align-middle text-center">@item.Status</td>
+                <td class="align-middle text-center">
+                    <img src="@item.Destination.Image" alt="Location Image"
+                         style="transition: transform 0.3s ease-in-out; width: 100px; height: 100px;"
+                         onmouseover="this.style.transform='scale(1.5)'"
+                         onmouseout="this.style.transform='scale(1)'" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
