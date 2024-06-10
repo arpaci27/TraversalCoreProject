@@ -32,6 +32,13 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> MyApprovalReservation()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valuesList = reservationManager.GetListApprovalReservations(values.Id);
+            return View(valuesList);
+        }
+
         [HttpGet]
         public IActionResult NewReservation()
         {
