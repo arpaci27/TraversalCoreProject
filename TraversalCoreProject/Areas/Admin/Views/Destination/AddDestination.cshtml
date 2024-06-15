@@ -1,0 +1,55 @@
+﻿@model EntityLayer.Concrete.Destination
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rota Oluşturma Sayfası</h1>
+<form method="post">
+    <div class="form-group">
+        @Html.LabelFor(m => m.City)
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.DayNight)
+        @Html.TextBoxFor(m => m.DayNight, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Image)
+        @Html.TextBoxFor(m => m.Image, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Capacity)
+        @Html.TextBoxFor(m => m.Capacity, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.CoverImage)
+        @Html.TextBoxFor(m => m.CoverImage, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Image2)
+        @Html.TextBoxFor(m => m.Image2, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Details1)
+        @Html.TextAreaFor(m => m.Details1, new { @class = "form-control", cols = "30", rows = "5" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Details2)
+        @Html.TextAreaFor(m => m.Details2, new { @class = "form-control", cols = "30", rows = "5" })
+    </div>
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Oluştur</button>
+</form>
